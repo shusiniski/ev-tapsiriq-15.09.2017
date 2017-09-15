@@ -1,0 +1,144 @@
+                                                 
+
+                                                      Ev Tapsiriqi 
+
+
+
+
+
+    1.Asagidaki kodun neticedi nedir ? detalli izah edin
+
+(function(){
+  var a = b = 3;
+})();
+
+console.log("a defined? " + (typeof a !== 'undefined'));
+console.log("b defined? " + (typeof b !== 'undefined'));
+
+
+                            
+                     Detalli izahi 
+
+ 
+Cavab:
+
+ a ve b hem funksiyanin ehate dairesi cercivesinde mueyyen olundugundan ve onlarin isledildiyi
+xettin var sozleri ile baslandigindan ,JavaScript-in en cox inkisaf etdiricileri hem yuxarida gosterilen misalda tesnif edilmeyen 
+typeof a ve typeof b gozlemeyecekler.
+
+
+   Deyisenlerin funksiyanin sahesine bagli oldugundan neticelerin olacagini gozleyirik .
+
+   "a defined? " false
+    "b defined? " true
+  
+Amma nece b elave funksiyasi cercivesinde mueyyen edile biler?
+var a=b=3; ifadeleri ucun b=3; ve var a=b;, b qlobal bir deyiskenlikdir (var sozunden evvel deyil)
+ ve buna gorede ehate funksiyasindan kenarda helede ehate olunur.
+
+
+     
+
+     var a = b = 3;
+      b = 3;
+     var a = b;
+      
+
+  biz bunu this.b = 3 ve sozle desek var a=this.b
+
+
+  a defined---mueyyenlesdirilmemis
+
+  b defined---- b mueyyenlesdirilmis
+
+
+
+__________________________________________________________________________________________________________________________
+
+
+
+2) Asagdaki kodu reallasdirabilecek sum adli funksiya yazin
+console.log(sum(2,3));   // Netice 5
+console.log(sum(2)(3));  // Netice 5
+
+
+function sum(x) {
+  if (arguments.length == 2) {
+    return arguments[0] + arguments[1];
+  } else {
+    return function(y) { return x + y; };
+  }
+}
+
+
+   javaScript-de, funksiyalar arguments bir funksiyaya oturulmus faktiki arqumentlere cixis temin eden bir obyekt? cixis temin edir. 
+Bu length, funksiyaya oturulen mubahiselerin say?n? is vaxti?nda teyin etmek ucun istifade etmek imkan? verir .
+
+Iki arqument q?bul edildikd?, sad?c? onlar? birl?sdirir v? geri qay?d?r?q.
+
+
+Eks teqdirde ,bu formada cagirildiqina sum(2)(3)inaniriq,belelikle,anonim funksiyani geri qaytaririq sum()(bu halda 2) ve anonim funksiyaya kecirilmis arqument (bu halda 3).
+
+function sum(x, y) {
+  if (y !== undefined) {
+    return x + y;
+  } else {
+    return function(y) { return x + y; };
+  }
+}
+
+
+Bir funksiya cagirildiqda, JavaScript funksiyas? mueyyen edilen arqumentlerin say?na uygun arqumentlerin say?n? teleb etmir. 
+
+Kocurulmus arqumentlerin sayi funksiyanin mueyyenlesdirdiyi arqumentlerin say?n? asarsa, artiq arqumentler goz ard? edilir.
+Diger terefden, verilen arqumentlerin sayi funksiya mueyyeninde arqumentlerin say?ndan az olduqda, eskik arqumentler undefinedfunksiyada istinad edildikde bir deyere sahib olacaqlar.
+ Belelikle, yuxarida gosterilen numunede, sadece 2-ci arqumentin mueyyenlesdirilmediyini yoxlamaqla, funksiyan? hans? yolla cagirdigina gore mueyyenlesdire bilerik.
+
+________________________________________________________________________________________________________________________________________________________________________________________________
+
+
+
+
+3)  3.Asagidaki kodun neticeleri ne olacaq? Izah edin
+
+console.log("0 || 1 = "+(0 || 1));
+console.log("1 || 2 = "+(1 || 2));
+console.log("0 && 1 = "+(0 && 1));
+console.log("1 && 2 = "+(1 && 2));
+
+
+0 || 1 = 1
+1 || 2 = 1
+0 && 1 = 0
+1 && 2 = 2
+
+JavaScript-de her ikisi || ve && soldan saga qiymetlendirildikde ilk tam mentiqi "Mentiqi deyer"i qaytaran mentiqi operatorlardir.
+
+Ve ya (||) operatoru. X || Y formunun bir ifadesinde, X ilk defe qiymetlendirilmis ve bir boolean deyer kimi serh edilir.
+Bu boolean deyeri dogruysa, "true"(1) geriqaytarilir ve Y qiymetlendirilmir, cunki "ve ya" veziyyeti artiq temin edilmisdir.
+Bu boolean deyer "yanlis"olsa da, biz Y qiymetlendiririk ve bunu bir boolean deyer kimi qiymetlendirmek qeder X  || Y dogru ve ya yanlis olub bilmirem.
+Buna gore , 0 || 11 || oldugu kimi , dogru (1) qiymetlendirir 2.
+
+Ve operatoru , X&&Y formasinin ifadesindeki X ilk olaraq qiymetlendirilmis ve bir boolean deyer kimi serh edilmisdir .
+Bu boolean deyer yalalndirsa , sehv (0) qaytarilir ve Y qiymetlendirilmir ,cunki 
+"ve " veziyyeti artiq bas vermeyib. Bu boolean deyer "dogru", baxmayaraq ki Y qiymetlendiririk
+ve bir boolean deyer kimi serh qeder biz hele X && Y dogru ve ya yanlis olub olmadigini bilmirem.
+
+
+And &&
+ 
+
+true(1)V folse(0)>folse
+true V true >true
+folse V true >folse
+folse V folse > folse
+
+
+
+Or ||
+
+1 ^ 0 >1
+1^ 1>1
+0^ 1>1
+0^0>0
+
