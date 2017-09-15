@@ -1,0 +1,53 @@
+                                                 
+
+                                                      Ev Tapsiriqi 
+
+
+
+
+
+    1.Asagidaki kodun neticedi nedir ? detalli izah edin
+
+(function(){
+  var a = b = 3;
+})();
+
+console.log("a defined? " + (typeof a !== 'undefined'));
+console.log("b defined? " + (typeof b !== 'undefined'));
+
+
+                            
+                     Detalli izahi 
+
+ 
+Cavab:
+
+ a ve b hem funksiyanin ehate dairesi cercivesinde mueyyen olundugundan ve onlarin isledildiyi
+xettin var sozleri ile baslandigindan ,JavaScript-in en cox inkisaf etdiricileri hem yuxarida gosterilen misalda tesnif edilmeyen 
+tipe ve typeof b gozlemeyecekler.
+
+
+   Deyisenlerin funksiyanin sahesine bagli oldugundan neticelerin olacagini gozleyirik .
+
+   "a defined? " false
+    "b defined? " true
+  
+Amma nece b elave funksiyasi cercivesinde mueyyen edile biler?
+var a=b=3; ifadeleri ucun b=3; ve var a=b;, b qlobal bir deyiskenlikdir (var sozunden evvel deyil)
+ ve buna gorede ehate funksiyasindan kenarda helede ehate olunur.
+
+
+     
+
+     var a = b = 3;
+      b = 3;
+     var a = b;
+      
+
+  biz bunu this.b = 3 ve sozle desek var a=this.b
+
+  b ortuk funksiyasindan kenarda mueyyen edilerken, "use strict";sehv askar etmeye calisin .
+
+  a defined---mueyyenlesdirilmemis
+
+  b defined---- b mueyyenlesdirilmis
